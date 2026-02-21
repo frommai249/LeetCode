@@ -10,9 +10,30 @@ namespace LeetCode.Easy
     {
         public static void Display()
         {
-            IList<IList<int>> test = new List<IList<int>>();
+            PrintOutput(Generate(5));
+            PrintOutput(Generate(1));
+        }
 
-            test.Add(new List<int> { 1 });
+        private static void PrintOutput(IList<IList<int>> input)
+        {
+            Console.Write('[');
+            
+            foreach(var item in input)
+            {
+                Console.Write('[');
+                
+                foreach (var item2 in item) 
+                    Console.Write(item2.ToString() + ',');
+                
+                Console.Write(']');
+
+                if (input.IndexOf(item) != input.Count - 1)
+                    Console.Write(',');
+            }
+
+            Console.Write(']');
+
+            Console.WriteLine();
         }
 
         private static IList<IList<int>> Generate(int numRows)
